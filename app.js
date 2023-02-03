@@ -1,21 +1,26 @@
+var calculator = document.createElement('div');
+calculator.innerHTML = '<input type="text" id="calculator-input" />';
+calculator.innerHTML += '<button id="calculator-add">+</button>';
+calculator.innerHTML += '<button id="calculator-subtract">-</button>';
+calculator.innerHTML += '<div id="calculator-result"></div>';
 
-let string = "";
-let buttons = document.querySelectorAll('.button');
-Array.from(buttons).forEach((button)=>{
-  button.addEventListener('click', (e)=>{
-    if(display.innerHTML == '='){
-      string = eval(string);
-      document.querySelector('input').value = string;
-    }
-    else if(display.innerHTML == 'input'){
-      string = ""
-      document.querySelector('input').value = string;
-    }
-    else{ 
-    console.log(display)
-    string = string + display.innerHTML;
-    document.querySelector('input').value = string;
-      }
-  })
-})
+
+
+var calculatorInput = document.getElementById('calculator-input');
+var calculatorAdd = document.getElementById('calculator-add');
+var calculatorSubtract = document.getElementById('calculator-subtract');
+var calculatorResult = document.getElementById('calculator-result');
+var calculatorValue = 0;
+
+calculatorAdd.addEventListener('click', function() {
+  calculatorValue += parseInt(calculatorInput.value);
+  calculatorResult.innerHTML = calculatorValue;
+});
+
+calculatorSubtract.addEventListener('click', function() {
+  calculatorValue -= parseInt(calculatorInput.value);
+  calculatorResult.innerHTML = calculatorValue;
+});
+
+
 
